@@ -1,15 +1,21 @@
 const url = "https://images-api.nasa.gov/search?q="
 const BUTTON = document.getElementById("btnBuscar")
 
-let currentImageArray = []
-
 async function getSearchData(url) {
     try {
         let response = await fetch(url);
-        let data = await response.json()
-        console.log(data)
-        currentImageArray = data.collection.items;
-        console.log(currentImageArray)
+        let jsonData = await response.json()
+        console.log(jsonData)
+        const {
+            collection: { items },
+        } = jsonData
+        for (const item of items) {
+            const {
+                data: [{ title, description, date_created }],
+                links: [{ href }]
+            } = item;
+            console.log(`${title} - ${description} - ${date_created} - ${href}`);
+        }
     } catch (error) {
         console.error(error);
     }
