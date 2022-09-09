@@ -17,11 +17,14 @@ function showImage(jsonData) {
         collection: { items },
     } = jsonData
     for (const item of items) {
-        const {
-            data: [{ title, description, date_created }],
-            links: [{ href }]
-        } = item;
-        console.log(`${title} - ${description} - ${date_created} - ${href}`);
+        if (item.links) {
+            const {
+                data: [{ title, description, date_created }],
+                links: [{ href }]
+            } = item;
+            console.log(`${title} - ${description} - ${date_created} - ${href}`);
+            
+        }
     }
 }
 
