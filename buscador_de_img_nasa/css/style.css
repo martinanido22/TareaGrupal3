@@ -1,9 +1,33 @@
 main {
-    min-height: calc(100vh - 160px);
-  }
+  min-height: calc(100vh - 160px);
+}
 
-  #contenedor {
-    border: 1px solid lightgray; /* Color del borde, debe ser más claro que fondo */
-    background:lightgray; /* Fondo */
-    width:min-content
-  }
+.item {
+  border: 1px solid lightgray;
+  background: lightgray;
+  width: min-content;
+  display: inline-block;
+  margin: 6px;
+}
+
+img {
+  width:400px;
+  height:200px;
+}
+
+.imgDesc {
+  background:#ffffff none repeat scroll 0 
+  0;overflow:auto;
+  color:#000000;
+  width:auto;
+  height:150px;
+  padding:8px;
+  font-size: 15px;
+}
+
+.fecha {
+  font-size: 12px;
+  color: gray;
+  background-color: white;
+  padding: 5px;
+}

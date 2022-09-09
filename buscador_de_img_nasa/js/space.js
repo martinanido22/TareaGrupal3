@@ -13,6 +13,7 @@ async function getSearchData(url) {
 }
 
 function showImage(jsonData) {
+    htmlContentToAppend = "";
     const {
         collection: { items },
     } = jsonData
@@ -23,7 +24,16 @@ function showImage(jsonData) {
                 links: [{ href }]
             } = item;
             console.log(`${title} - ${description} - ${date_created} - ${href}`);
-            
+            htmlContentToAppend += `
+            <div class="item">
+                <div class="img"><img src="${href}"></div>
+                <div class="imgDesc">
+                    <b style="font-size: 20px;">${title}</b><br>
+                    ${description}<br>
+                </div>
+                <div class="fecha">${date_created}</div>
+            </div>`
+            document.getElementById("contenedor").innerHTML = htmlContentToAppend;
         }
     }
 }
