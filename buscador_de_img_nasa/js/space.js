@@ -6,24 +6,28 @@ async function getSearchData(url) {
         let response = await fetch(url);
         let jsonData = await response.json()
         console.log(jsonData)
-        const {
-            collection: { items },
-        } = jsonData
-        for (const item of items) {
-            const {
-                data: [{ title, description, date_created }],
-                links: [{ href }]
-            } = item;
-            console.log(`${title} - ${description} - ${date_created} - ${href}`);
-        }
+        showImage(jsonData)
     } catch (error) {
         console.error(error);
     }
 }
 
+function showImage(jsonData) {
+    const {
+        collection: { items },
+    } = jsonData
+    for (const item of items) {
+        const {
+            data: [{ title, description, date_created }],
+            links: [{ href }]
+        } = item;
+        console.log(`${title} - ${description} - ${date_created} - ${href}`);
+    }
+}
 
 BUTTON.addEventListener("click", () => {
     let search = url + document.getElementById("inputBuscar").value
     console.log(search)
     getSearchData(search)
 })
+
